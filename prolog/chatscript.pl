@@ -7,7 +7,7 @@
  *
  *   @author Anne Ogborn
  *   @license mit
- *   @version 1.0.0
+ *   @version 1.0.5
  */
 :- multifile license:license/3.
 
@@ -25,27 +25,24 @@ license:license(mit, lgpl,
 
 %%	set_chatscript_address(+Address:term) is det
 %
-%	@param Address is a term of form domain:port
+%	Set the address of the chatscript server
 %
-%       Set the address of the chatscript server
+%	@param Address a term of form domain:port
 %
 set_chatscript_address(Address) :-
 	retractall(server_address(_)),
 	asserta(server_address(Address)).
 
-%%	talk(+User:atom, +Bot:atom, +Message:atom, -Reply:string) is
-%	semidet
+%%	talk(+User:atom, +Bot:atom, +Message:atom, -Reply:string) is semidet
 %
-%	Send a volley to the server
+%	Send a volley to the server.
+%	You must call start_conversation before calling this, for each
+%     user
 %
-%	@User User name
-%	@Bot  name of the bot. The default bot is ''
-%	@Message user's input to the bot. No nl. Must not be the null
-%	string
-%       @Reply bots response
-%
-%     You must call start_conversation before calling this
-%     for each user
+%	@param User User name
+%	@param Bot  name of the bot. The default bot is ''
+%	@param Message user's input to the bot. No nl. Must not be the null string
+%       @param Reply bots response
 %
 talk(User, Bot, Message, Reply) :-
 	Message \= '',
@@ -65,8 +62,15 @@ talk_(User, Bot, Message, Reply) :-
 
 %%	start_conversation(+User:atom, +Bot:atom, -Reply:string) is det
 %
-%	call this for each user to get initial response prior to calling
-%	talk/4
+%	Call this for each user to initiate a conversation. This makes
+%	a set of user variables for the user and gets the initial
+%	response. ChatScript requires calling this prior to calling
+%	talk/4 with a new user.
+%
+%	@param User Username
+%	@param Bot  Bot name
+%	@param Reply The utterance the bot will start the conversation
+%	with
 %
 start_conversation(User, Bot, Reply) :-
 	talk_(User, Bot, '', Reply).
