@@ -7,13 +7,15 @@ You will need to install ChatScript from [here](http://chatscript.sourceforge.ne
 
 And run the server by running
 
-   C:\docs\chatscript\chatscript.exe port=4050 userlog serverctrlz
+   =|C:\docs\chatscript\chatscript.exe port=4050 userlog serverctrlz|=
 
 on windows or 
 
-   chatscript port=4050 userlog serverctrlz
+   =|./LinuxChatScript64 port=4050 userlog serverctrlz|=
 
 on linux.
+
+Note that on Linux you'll need SWI-Prolog 7.3.0 or better,
 
 set the chatscript address at 
 
