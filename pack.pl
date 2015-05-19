@@ -1,6 +1,6 @@
 name(plchatscript).
 title('Interface to the ChatScript server.').
-version('1.0.5').
+version('1.0.6').
 author('Anne Ogborn', 'annie@swi-prolog.org').
 maintainer('Anne Ogborn', 'annie@swi-prolog.org').
 packager('Anne Ogborn', 'annie@swi-prolog.org').

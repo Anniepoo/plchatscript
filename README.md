@@ -27,6 +27,11 @@ the '' is the name of the bot. The '' is the default bot.
 
 then for each volley, use `talk/4`
 
+Release
+-------
+
+1.0.6   improve failure recovery
+
 
 
 

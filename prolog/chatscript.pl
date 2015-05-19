@@ -7,7 +7,7 @@
  *
  *   @author Anne Ogborn
  *   @license mit
- *   @version 1.0.5
+ *   @version 1.0.6
  */
 :- multifile license:license/3.
 
@@ -51,14 +51,17 @@ talk(User, Bot, Message, Reply) :-
 talk_(User, Bot, Message, Reply) :-
 	format(string(S), '~w\x00~w\x00\~w\x00', [User, Bot, Message]),
 	server_address(Address),
-	tcp_connect(Address, StreamPair, []),
-	stream_pair(StreamPair, Read, Write),
-	write(Write, S),
-	flush_output(Write),
-	read_stream_to_codes(Read, Codes1),
-	delete(Codes1, 0, Codes2),  % they insert nuls
-	string_codes(Reply, Codes2),
-	close(StreamPair).
+	setup_call_cleanup(
+	    (	tcp_connect(Address, StreamPair, []),
+		stream_pair(StreamPair, Read, Write)),
+	    (	write(Write, S),
+		flush_output(Write),
+		read_stream_to_codes(Read, Codes1),
+		delete(Codes1, 0, Codes2),  % they insert nuls
+		delete(Codes2, 0xFF, Codes3),
+		delete(Codes3, 0xFE, Codes4),
+		string_codes(Reply, Codes4)),
+	    close(StreamPair)).
 
 %%	start_conversation(+User:atom, +Bot:atom, -Reply:string) is det
 %
