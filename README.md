@@ -34,6 +34,9 @@ Release
 
 1.0.6   improve failure recovery
 1.0.7   chnaged readme, and fixed version
+1.0.8   fighting darn pack system
+1.0.9 even more fighting darned pack system
+
 
 
 
