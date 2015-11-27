@@ -33,6 +33,8 @@ Release
 -------
 
 1.0.6   improve failure recovery
+1.0.7   chnaged readme, and fixed version
+
 
 
 
