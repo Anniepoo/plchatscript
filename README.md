@@ -51,6 +51,9 @@ plchatscript -+
 this is how github makes the archive, so using theirs is convenient
 
 8. Upload this archive to /var/www/packs on www.pathwayslms.com
+9. run SWI-Prolog
+10. ?- pack_install('http://pathwayslms.com/packs/plchatscript-1.0.8.zip').   <-- with whatever version your making
+
 
 Release
 -------
