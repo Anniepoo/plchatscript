@@ -29,6 +29,29 @@ the '' is the name of the bot. The '' is the default bot.
 
 then for each volley, use `talk/4`
 
+Deploying a new Release
+-----------------------
+
+1. make your local changes
+2. change this file by adding a description of your release on last line
+3. change pack.pl to use the new release number
+4. commit changes locally
+5. add tag to commit (git tag x.y.z)
+6. git push origin master
+7. download the appropriate archive from github:  https://github.com/Anniepoo/plchatscript/archive/1.0.8.zip
+You can also make your own archive. USE ZIP, NOT bz or gz
+structure inside the zip MUST be:
+plchatscript -+
+              + README.md
+              + pack.pl
+              + prolog - +
+                         + chatscript.pl
+                         + license.txt
+
+this is how github makes the archive, so using theirs is convenient
+
+8. Upload this archive to /var/www/packs on www.pathwayslms.com
+
 Release
 -------
 
